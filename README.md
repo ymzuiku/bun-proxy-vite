@@ -20,9 +20,6 @@ This tool provides a lightweight, zero-dependency proxy for HTTP requests and HM
 Run directly with Bun (no installation required):
 
 ```bash
-# Default ports: proxy 4900 → upstream 4000
-bunx bun-proxy-vite
-
 # Custom ports, e.g., proxy 6000 → upstream 5000
 bunx bun-proxy-vite -p 6000:5000
 ```
@@ -30,7 +27,7 @@ bunx bun-proxy-vite -p 6000:5000
 ## CLI Options
 
 - `-p, --ports <proxy:upstream>`
-  Set proxy and upstream ports. Format: `proxyPort:upstreamPort`. Default is `4900:4000`.
+  Set proxy and upstream ports. Format: `proxyPort:upstreamPort`. Example `-p 6000:5000`.
 
 ## How It Works
 
