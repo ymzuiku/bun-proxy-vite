@@ -1,0 +1,37 @@
+{
+  "name": "bun-proxy-vite",
+  "version": "0.0.1",
+  "private": false,
+  "homepage": "https://github.com/ymzuiku/bun-proxy-vite",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ymzuiku/bun-proxy-vite.git"
+  },
+  "files": [
+    "bin.ts",
+    "tsconfig.json"
+  ],
+  "license": "MIT",
+  "description": "A proxy for Vite HMR",
+  "author": "Zhu Liang",
+  "publisher": "Zhu Liang",
+  "module": "bin.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "bunx biome format --write"
+  },
+  "bin": {
+    "bun-proxy-vite": "bin.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/minimist": "^1.2.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^2.0.5",
+    "minimist": "^1.2.8"
+  }
+}
