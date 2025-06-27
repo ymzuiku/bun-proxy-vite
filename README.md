@@ -1,10 +1,12 @@
 # bun-proxy-vite
 
-Zero-dependency HTTP & WebSocket proxy for Bun/Vite HMR
+Zero-dependency HTTP & WebSocket proxy for Bun/Vite HMR, perfect for WSL development contexts.
 
 ## Purpose
 
 This tool provides a lightweight, zero-dependency proxy for HTTP requests and HMR (Hot Module Replacement) WebSocket connections when developing with Bun and Vite. It forwards browser traffic to an upstream server and handles automatic reconnections for WebSocket.
+
+**Key scenario**: When running your Vite dev server inside WSL, this proxy makes it easy for Windows and other devices on your network to connect to the Vite service in WSL without extra firewall or network configuration.
 
 ## Features
 
@@ -37,7 +39,7 @@ bunx bun-proxy-vite -p 6000:5000
 
 ## Intent
 
-When developing modern web applications with Bun and Vite, you often need a simple proxy to handle both HTTP and HMR WebSocket traffic, especially in containerized or multi-service setups. This tool aims to provide a minimal, dependency-free solution that you can run with a single Bun command.
+When developing modern web applications with Bun and Vite — especially inside WSL or other isolated environments — you often need a simple proxy to handle both HTTP and HMR WebSocket traffic. This tool aims to provide a minimal, dependency-free solution that you can run with a single Bun command to bridge between WSL and your host network.
 
 ## License
 
