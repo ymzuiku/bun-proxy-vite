@@ -2,6 +2,31 @@
 
 import { serve } from "bun";
 import { parseArgs } from "util";
+import os from "node:os";
+
+// 获取内网 IP（优先 IPv4、非 127.0.0.1）
+function getLocalIP() {
+	for (const iface of Object.values(os.networkInterfaces())) {
+		if (!iface) continue;
+		for (const addr of iface) {
+			if (addr.family === "IPv4" && !addr.internal) {
+				return addr.address;
+			}
+		}
+	}
+	return "127.0.0.1";
+}
+
+// 异步获取公网 IP（调用外部服务）
+async function getPublicIP() {
+	try {
+		const res = await fetch("https://api.ipify.org?format=json");
+		const { ip } = await res.json();
+		return ip;
+	} catch {
+		return "unknown";
+	}
+}
 
 const {
 	values: { ports },
@@ -127,4 +152,9 @@ serve({
 	},
 });
 
-console.log(`🚀 Proxy & WS listening on http://0.0.0.0:${PROXY_PORT}`);
+(async () => {
+	const localIP = getLocalIP();
+	const publicIP = await getPublicIP();
+	console.log(`📡 Local IP:   http://${localIP}:${PROXY_PORT}`);
+	console.log(`🌍 Public IP:  http://${publicIP}:${PROXY_PORT}`);
+})();
